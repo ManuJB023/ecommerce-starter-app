@@ -1,0 +1,18 @@
+{
+  "whyContinueWithGen1": "Gen 2 is missing features I need from Gen 1",
+  "projectName": "ecommercestarter",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react",
+    "config": {
+      "SourceDir": "frontend/src",
+      "DistributionDir": "frontend/build",
+      "BuildCommand": "npm run build",
+      "StartCommand": "npm start"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+}

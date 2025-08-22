@@ -1,0 +1,502 @@
+# E-commerce Starter - Comprehensive .gitignore
+
+# ===============================================
+# NODE.JS & NPM
+# ===============================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Next.js build output
+.next
+out
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
+# Temporary folders
+tmp/
+temp/
+
+# ===============================================
+# ENVIRONMENT & CONFIGURATION
+# ===============================================
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+
+# dotenv environment variables file
+.env*
+!.env.example
+
+# ===============================================
+# BUILD OUTPUTS
+# ===============================================
+
+# React build output
+frontend/build/
+frontend/dist/
+
+# Backend build output
+backend/build/
+backend/dist/
+
+# General build directories
+build/
+dist/
+
+# ===============================================
+# AWS & AMPLIFY
+# ===============================================
+
+# Amplify
+#amplify-do-not-edit-begin
+amplify/\#current-cloud-backend
+amplify/.config/local-*
+amplify/logs
+amplify/mock-data
+amplify/mock-api-resources
+amplify/backend/amplify-meta.json
+amplify/backend/.temp
+amplify/backend/awscloudformation
+amplify/backend/function/*/src
+amplify/backend/function/*/dist
+amplify/backend/function/*/build
+amplify/backend/auth/*/build/
+amplify/backend/storage/*/build/
+amplify/backend/api/*/build/
+amplify/backend/function/*/build/
+build/
+dist/
+node_modules/
+aws-exports.js
+awsconfiguration.json
+amplifyconfiguration.json
+amplifyconfiguration.dart
+amplify-build-config.json
+amplify-gradle-config.json
+amplifytools.xcconfig
+.secret-*
+**.sample
+#amplify-do-not-edit-end
+
+# AWS CLI
+.aws/
+
+# CloudFormation
+cloudformation-template.yaml
+cloudformation-output.json
+
+# SAM
+.sam/
+
+# CDK
+cdk.out/
+cdk.context.json
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# ===============================================
+# DOCKER
+# ===============================================
+
+# Docker
+.docker
+docker-volumes/
+.dockerignore.bak
+
+# ===============================================
+# DATABASE
+# ===============================================
+
+# MongoDB
+*.mongodb
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Redis
+dump.rdb
+
+# Database backups
+*.backup
+*.bak
+
+# ===============================================
+# TESTING
+# ===============================================
+
+# Test coverage
+coverage/
+*.lcov
+
+# Jest
+jest_0/
+
+# Test results
+test-results/
+junit.xml
+
+# ===============================================
+# LOGS
+# ===============================================
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ===============================================
+# SECURITY & SECRETS
+# ===============================================
+
+# API keys and secrets
+config/secrets.json
+secrets.json
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Private keys
+private.key
+server.key
+
+# Certificates
+*.cert
+cert.pem
+key.pem
+localhost.crt
+localhost.key
+
+# ===============================================
+# PAYMENT & STRIPE
+# ===============================================
+
+# Stripe CLI
+.stripe/
+
+# Payment test data
+payment-test-data/
+
+# ===============================================
+# EDITOR & IDE
+# ===============================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.ftpconfig
+.sftpconfig
+
+# Vim
+*.swp
+*.swo
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===============================================
+# OPERATING SYSTEM
+# ===============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ===============================================
+# DEVELOPMENT TOOLS
+# ===============================================
+
+# ESLint
+.eslintcache
+
+# Prettier
+.prettierignore
+
+# Husky
+.husky/_
+
+# Package manager locks (uncomment the one you don't use)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Bundle analyzer
+report.html
+
+# Webpack
+.webpack/
+
+# Rollup
+.rollup.cache/
+
+# ===============================================
+# MONITORING & ANALYTICS
+# ===============================================
+
+# Sentry
+.sentryclirc
+
+# New Relic
+newrelic_agent.log
+.newrelic_agent_log
+
+# ===============================================
+# MISCELLANEOUS
+# ===============================================
+
+# Backup files
+*.backup
+*.bak
+*.tmp
+*.temp
+
+# Archive files
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Local development certificates
+cert.pem
+key.pem
+
+# Local development configs
+config/development.json
+config/local.json
+
+# Documentation builds
+docs/build/
+
+# API documentation
+api-docs/
+
+# Generated files
+generated/
+
+# Temporary upload files
+uploads/temp/
+
+# Cache directories
+.cache/
+cache/
+
+# ===============================================
+# PROJECT SPECIFIC
+# ===============================================
+
+# Seed data (if contains sensitive information)
+# seed-data.js
+
+# Local development scripts
+scripts/local/
+
+# Test data
+test-data/
+
+# Development utilities
+dev-utils/
+
+# Local configuration overrides
+local.config.js
+
+# ===============================================
+# RAILWAY DEPLOYMENT
+# ===============================================
+
+# Railway
+.railway/
+
+# ===============================================
+# GITHUB ACTIONS
+# ===============================================
+
+# GitHub Actions artifacts
+.github/workflows/artifacts/
+
+# ===============================================
+# PERFORMANCE & OPTIMIZATION
+# ===============================================
+
+# Lighthouse reports
+lighthouse-reports/
+
+# Performance tests
+performance-tests/
+
+# Bundle analysis
+bundle-analysis/
+
+# ===============================================
+# SECURITY SCANNING
+# ===============================================
+
+# Security scan results
+security-scan-results/
+
+# Vulnerability reports
+vulnerability-reports/
+
+# ===============================================
+# END OF GITIGNORE
+# ===============================================
+
+# Custom additions - add project-specific ignores below this line
