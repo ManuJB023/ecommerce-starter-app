@@ -1,41 +1,69 @@
 # E-commerce Starter App
 
-A production-ready full-stack e-commerce application built with React, Node.js, and deployed on AWS. Features modern UI/UX, secure payment processing, and scalable cloud infrastructure.
 
-## 🚀 Demo
+A production-ready full-stack e-commerce application built with React, Node.js, TypeScript, and MongoDB. Features modern UI/UX, secure payment processing with Stripe, and scalable cloud infrastructure.
 
-This project was successfully deployed and tested with:
-- **Frontend**: AWS Amplify hosting
-- **Backend API**: Railway deployment  
-- **Database**: MongoDB Atlas
+## Features
 
-*Note: Live demo links have been removed as AWS resources were cleaned up to avoid ongoing costs. The complete deployment guide below shows how to recreate the full infrastructure.*
+### Frontend (React + TypeScript)
+- Modern responsive design with Tailwind CSS
+- Auto-hiding navigation header with scroll detection
+- Product catalog with search and filtering
+- Shopping cart with persistent state
+- User authentication and profile management
+- Stripe checkout integration
+- Mobile-responsive design
 
-## ✨ Features
+### Backend (Node.js + Express)
+- RESTful API with proper error handling
+- JWT authentication with bcrypt password hashing
+- MongoDB integration with Mongoose ODM
+- Stripe payment processing with webhook support
+- Security features: CORS, helmet, rate limiting
+- Input validation and sanitization
 
-### 🎨 Frontend (React + TypeScript)
-- **Modern UI**: Responsive design with Tailwind CSS and smooth animations
-- **Advanced Header**: Auto-hiding navigation with backdrop blur and scroll effects
-- **Product Catalog**: Browse, search, and filter products with pagination
-- **Shopping Cart**: Persistent cart with real-time updates
-- **User Authentication**: Secure registration, login, and profile management
-- **Stripe Checkout**: Complete payment integration with secure processing
-- **Mobile Responsive**: Optimized for all device sizes
+## Tech Stack
 
-### 🔧 Backend (Node.js + Express)
-- **RESTful API**: Clean, documented endpoints with proper error handling
-- **JWT Authentication**: Secure token-based authentication with bcrypt
-- **MongoDB Integration**: Efficient data storage with Mongoose ODM
-- **Stripe Payments**: Complete payment processing with webhook support
-- **Security Hardened**: CORS, helmet, input validation, and rate limiting
-- **Admin Features**: Product management and order tracking
+### Frontend
+- React 19.1.1 with TypeScript
+- Tailwind CSS 3.3.6
+- React Router 7.8.1
+- Stripe Elements
+- Axios for API calls
+- Context API for state management
 
-### ☁️ Infrastructure & DevOps
-- **AWS Amplify**: Frontend hosting with CDN and environment management
-- **Railway**: Backend deployment with auto-scaling and monitoring
-- **MongoDB Atlas**: Cloud database with automated backups
-- **GitHub Actions**: CI/CD pipeline with automated testing and deployment
-- **Environment Management**: Secure handling of secrets and configurations
+### Backend
+- Node.js with Express
+- MongoDB with Mongoose
+- JWT for authentication
+- Stripe API for payments
+- bcryptjs for password hashing
+
+## Prerequisites
+
+- Node.js 16+ (18+ recommended)
+- MongoDB (local or Atlas)
+- Stripe account
+- Git
+
+## Quick Setup
+
+### Automated Setup (Recommended)
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/ecommerce-starter.git
+cd ecommerce-starter
+
+# Run the setup script
+chmod +x setup.sh
+./setup.sh
+
+# Configure environment variables (see below)
+# Edit backend/.env
+# Edit frontend/.env.local
+
+# Start development servers
+npm run dev
 
 ## 🏗️ Architecture
 
@@ -52,51 +80,28 @@ This project was successfully deployed and tested with:
                         └─────────────────┘
 ```
 
-## 📋 Tech Stack
+## Manual Setup
 
-### Frontend
-- **React 18** with TypeScript for type safety
-- **Tailwind CSS** for responsive styling
-- **React Router** for client-side routing
-- **Context API** for state management
-- **Stripe Elements** for payment forms
-- **Axios** for API communication
-
-### Backend
-- **Node.js** with Express framework
-- **MongoDB** with Mongoose ODM
-- **JWT** for authentication
-- **Stripe API** for payment processing
-- **bcryptjs** for password hashing
-- **Helmet & CORS** for security
-
-### DevOps
-- **AWS Amplify** for frontend deployment
-- **Railway** for backend hosting
-- **GitHub Actions** for CI/CD
-- **MongoDB Atlas** for database hosting
-
-## 🛠️ Local Development
-
-### Prerequisites
-- Node.js 18+
-- MongoDB (local or Atlas)
-- Stripe account
-- Git
-
-### Quick Start
-
-```bash
 # Clone the repository
 git clone https://github.com/yourusername/ecommerce-starter.git
 cd ecommerce-starter
 
-# Install all dependencies
-npm run install:all
+# Install root dependencies
+npm install
 
-# Set up environment variables
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env.local
+# Install frontend dependencies
+cd frontend
+npm install
+cp .env.example .env.local
+# Edit .env.local with your configuration
+cd ..
+
+# Install backend dependencies
+cd backend
+npm install
+cp .env.example .env
+# Edit .env with your configuration
+cd ..
 
 # Start development servers
 npm run dev
@@ -104,238 +109,277 @@ npm run dev
 
 ### Environment Configuration
 
-**Backend (.env):**
+**Backend (.env)**
+
+**Create backend/.env from backend/.env.example:**
 ```env
 NODE_ENV=development
 PORT=5000
 MONGODB_URI=mongodb://localhost:27017/ecommerce
-JWT_SECRET=your-super-secret-jwt-key
+JWT_SECRET=your-super-secret-jwt-key-min-32-chars
 STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+FRONTEND_URL=http://localhost:3000
 ```
 
 **Frontend (.env.local):**
+
+**Create frontend/.env.local from frontend/.env.example**
 ```env
 REACT_APP_API_URL=http://localhost:5000/api
 REACT_APP_STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key
 ```
 
-## 🚀 Deployment
+Getting Stripe Keys
 
-## 🚀 Deployment Options
+Sign up at stripe.com
+Get your keys from dashboard.stripe.com/apikeys
+Use test keys (pk_test_... and sk_test_...) for development
+Use live keys only in production
 
-### Frontend Hosting
-| Service | Free Tier | Paid Plans | Best For |
-|---------|-----------|------------|----------|
-| **AWS Amplify** | 1000 build min/month | $0.01/min after | Enterprise features |
-| **Vercel** | Unlimited personal | $20/month team | Next.js optimization |
-| **Netlify** | 300 build min/month | $19/month | Static sites |
-| **GitHub Pages** | Free for public repos | N/A | Simple demos |
+### Available Scripts
 
-### Backend Hosting
-| Service | Free Tier | Paid Plans | Best For |
-|---------|-----------|------------|----------|
-| **Railway** | $5/month hobby | $20/month pro | Node.js apps |
-| **Heroku** | None (discontinued) | $7/month basic | Traditional hosting |
-| **Render** | 750 hours/month free | $7/month paid | Docker support |
-| **AWS ECS/Fargate** | Limited free tier | Pay-per-use | Enterprise scale |
+# Development
+npm run dev              # Start both frontend and backend
+npm run dev:frontend     # Start frontend only (port 3000)
+npm run dev:backend      # Start backend only (port 5000)
+
+# Installation
+npm run install:all      # Install all dependencies
+
+# Production Build
+npm run build            # Build frontend for production
+
+# Testing
+npm test                 # Run all tests
+npm run test:frontend    # Run frontend tests
+npm run test:backend     # Run backend tests
+
+### Project Structure
+```
+ecommerce-starter/
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/      # Reusable UI components
+│   │   ├── contexts/        # React context providers
+│   │   ├── pages/           # Page components
+│   │   ├── services/        # API service layer
+│   │   ├── App.tsx
+│   │   └── index.tsx
+│   ├── .env.example
+│   └── package.json
+├── backend/
+│   ├── src/
+│   │   ├── controllers/     # Request handlers
+│   │   ├── models/          # Database models
+│   │   ├── routes/          # API routes
+│   │   ├── middleware/      # Custom middleware
+│   │   └── server.js
+│   ├── .env.example
+│   └── package.json
+├── setup.sh                 # Automated setup script
+├── .gitignore
+└── package.json
+```
+
+### API Documentation
+
+# Authentication Endpoints
+```
+MethodEndpointDescriptionPOST/api/auth/registerUser registrationPOST/api/auth/loginUser loginGET/api/auth/meGet current user (requires auth)
+Product Endpoints
+MethodEndpointDescriptionGET/api/productsGet all productsGET/api/products/:idGet single productPOST/api/productsCreate product (admin only)PUT/api/products/:idUpdate product (admin only)DELETE/api/products/:idDelete product (admin only)
+Payment Endpoints
+MethodEndpointDescriptionPOST/api/payments/create-payment-intentCreate Stripe paymentPOST/api/payments/webhookStripe webhook handler
+```
+### Deployment
+
+# Frontend Deployment Options
+# Vercel (Recommended - Free)
+```
+npm install -g vercel
+cd frontend
+vercel --prod
+```
+# Netlify
+```
+npm install -g netlify-cli
+cd frontend
+npm run build
+netlify deploy --prod --dir=build
+```
+
+### AWS Amplify
+
+Connect GitHub repository
+Set build command: npm run build
+Set publish directory: build
+Add environment variables
+
+###  Deployment Options
+# Railway
+
+Sign up at railway.app
+Create new project from GitHub
+Add environment variables
+Deploy automatically on push
+
+### Render
+
+Sign up at render.com
+Create new Web Service
+Connect GitHub repository
+Add environment variables
 
 ### Database Options
-| Service | Free Tier | Paid Plans | Best For |
-|---------|-----------|------------|----------|
-| **MongoDB Atlas** | 512MB M0 cluster | $9/month M2 | Document database |
-| **PlanetScale** | 1 database | $29/month | MySQL serverless |
-| **Supabase** | 500MB + 2GB bandwidth | $25/month | PostgreSQL + auth |
+# MongoDB Atlas (Recommended - Free tier available)
 
-### Recommended Setups
+Sign up at mongodb.com/cloud/atlas
+Create free M0 cluster
+Get connection string
+Add to MONGODB_URI in backend/.env
 
-**Free Tier (Development)**
-- Frontend: Vercel or Netlify
-- Backend: Render free tier
-- Database: MongoDB Atlas M0
+### Security Features
 
-**Low Cost ($10-15/month)**
-- Frontend: Vercel Pro
-- Backend: Railway hobby
-- Database: MongoDB Atlas M2
+JWT authentication with httpOnly cookies
+Password hashing with bcrypt (12 salt rounds)
+Rate limiting on sensitive endpoints
+CORS configuration
+Helmet security headers
+Input validation and sanitization
+XSS protection
+CSRF protection
 
-**Production Scale ($50+/month)**
-- Frontend: AWS Amplify
-- Backend: AWS ECS with auto-scaling
-- Database: MongoDB Atlas dedicated cluster
+### Cost Considerations
+# Free Tier Options
 
-## 🧪 Testing
+MongoDB Atlas: Free M0 cluster (512MB)
+Vercel: Unlimited personal projects
+Railway: $5/month credit (sufficient for demos)
+Netlify: 300 build minutes/month free
 
-```bash
+### Estimated Monthly Costs
+
+Development/Demo: $0-10/month (free tiers)
+Low Traffic: $25-50/month
+Production Scale: $100+/month (with auto-scaling)
+
+### Cost Optimization
+
+Use free tiers for development
+Monitor usage with provider dashboards
+Set up billing alerts
+Clean up unused resources
+Use serverless options when possible
+
+### Troubleshooting
+# Common Issues
+# Build fails with Tailwind errors
+```
+# Ensure you're using Tailwind v3, not v4
+cd frontend
+npm install -D tailwindcss@^3.3.6
+rm -rf node_modules/.cache
+npm start
+```
+
+### ResizeObserver errors in development
+This is a harmless warning from Stripe Elements in React StrictMode. It won't appear in production builds. To suppress it, update frontend/src/index.tsx with the debounce code provided in the setup guide.
+CORS errors
+
+### Verify FRONTEND_URL in backend/.env matches your frontend URL
+Check backend CORS configuration in server.js
+
+### Payment failures
+
+Verify Stripe keys are correct (test keys in development)
+Check webhook secret matches Stripe dashboard
+Ensure webhook endpoint is publicly accessible in production
+
+### Database connection errors
+
+Verify MONGODB_URI is correct
+Check MongoDB Atlas network access (whitelist IP)
+Ensure database user has correct permissions
+
+### Authentication not working
+
+Verify JWT_SECRET is at least 32 characters
+Check if cookies are being sent (credentials: 'include')
+Ensure frontend and backend URLs match CORS settings
+
+### Clearing Cache
+```
+# Clear frontend cache
+cd frontend
+rm -rf node_modules/.cache
+npm start
+
+# Clear backend cache
+cd backend
+rm -rf node_modules/.cache
+npm run dev
+```
+### Testing
+```
 # Run all tests
 npm test
 
-# Backend tests only
-npm run test:backend
-
-# Frontend tests only
-npm run test:frontend
-
 # Run tests with coverage
 npm run test:coverage
+
+# Run frontend tests only
+npm run test:frontend
+
+# Run backend tests only
+npm run test:backend
 ```
+### Contributing
 
-## 📊 API Documentation
-
-### Authentication Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | User registration |
-| POST | `/api/auth/login` | User login |
-| GET | `/api/auth/me` | Get current user |
-
-### Product Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/products` | Get all products |
-| GET | `/api/products/:id` | Get single product |
-| POST | `/api/products` | Create product (admin) |
-| PUT | `/api/products/:id` | Update product (admin) |
-| DELETE | `/api/products/:id` | Delete product (admin) |
-
-### Payment Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/payments/create-payment-intent` | Create Stripe payment |
-| POST | `/api/payments/webhook` | Stripe webhook handler |
-
-## 🔒 Security Features
-
-- **Authentication**: JWT tokens with secure httpOnly cookies
-- **Password Security**: bcrypt hashing with salt rounds
-- **API Security**: Rate limiting, CORS, and helmet protection
-- **Payment Security**: PCI-compliant Stripe integration
-- **Data Validation**: Input sanitization and schema validation
-- **Environment Security**: Secure secret management
-
-## 📈 Performance Optimizations
-
-- **Frontend**: Code splitting, lazy loading, and image optimization
-- **Backend**: Database indexing, connection pooling, and caching
-- **Infrastructure**: CDN delivery, auto-scaling, and load balancing
-
-## 🛡️ Monitoring & Logging
-
-- **Application Logs**: Structured logging with Morgan
-- **Error Tracking**: Comprehensive error handling and reporting
-- **Health Checks**: API health monitoring endpoints
-- **Performance Metrics**: Response time and throughput monitoring
-
-## 💰 Cost Considerations
-
-This project uses several cloud services. Here's a breakdown of potential costs:
-
-### Free Tier Options
-- **MongoDB Atlas**: Free M0 cluster (512MB storage)
-- **Railway**: $5/month for hobby plan (sufficient for demo)
-- **AWS Amplify**: Free tier includes 1000 build minutes/month
-- **Stripe**: No monthly fees, only transaction fees (2.9% + 30¢)
-
-### Estimated Monthly Costs
-- **Development/Demo**: $0-10/month (using free tiers)
-- **Low Traffic Production**: $25-50/month
-- **High Traffic Production**: $100+/month (with scaling)
-
-### Cost Optimization Tips
-1. Use free tiers for development and testing
-2. Monitor usage in AWS Cost Explorer
-3. Set up billing alerts for budget management
-4. Clean up unused resources regularly
-5. Consider serverless alternatives for lower traffic
-
-### Resource Cleanup
-When done with the project, remember to:
-- Delete AWS Amplify apps
-- Remove Railway deployments
-- Pause/delete MongoDB Atlas clusters
-- Cancel any paid service subscriptions
-
-```bash
-# Run the database seeding script
-cd backend
-node seed-data.js
-```
-
-### Creating Admin Users
-
-Admin users must be manually promoted in the database:
-```javascript
-// In MongoDB, update user to admin
-db.users.updateOne(
-  { email: "admin@example.com" }, 
-  { $set: { isAdmin: true } }
-)
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'Add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+# Fork the repository
+Create a feature branch: git checkout -b feature/amazing-feature
+Commit changes: git commit -m 'Add amazing feature'
+Push to branch: git push origin feature/amazing-feature
+Open a Pull Request
 
 ### Code Standards
-- Use TypeScript for new frontend code
-- Follow ESLint configuration
-- Write tests for new features
-- Update documentation for API changes
 
-## 📝 License
+Use TypeScript for frontend code
+Follow ESLint configuration
+Write tests for new features
+Update documentation for API changes
+Use meaningful commit messages
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### License
+MIT License - see LICENSE file for details
+Support
 
-## 🆘 Support & Troubleshooting
+Issues: GitHub Issues
+Discussions: GitHub Discussions
+Documentation: Check README files in frontend/ and backend/ directories
 
-### Common Issues
+### Roadmap
+# Planned Features
 
-**CORS Errors**: Verify backend URL in frontend environment variables
-**Payment Failures**: Check Stripe keys and webhook configuration
-**Database Connection**: Verify MongoDB Atlas network access and credentials
-**Build Failures**: Clear node_modules and reinstall dependencies
+ Product reviews and ratings
+ Wishlist functionality
+ Order tracking
+ Email notifications
+ Social authentication (Google, Facebook)
+ Admin dashboard
+ Inventory management
+ Multi-language support
+ Advanced search with filters
+ Product recommendations
 
-### Getting Help
+### Acknowledgments
 
-- Check [Issues](https://github.com/yourusername/ecommerce-starter/issues) for known problems
-- Create a [New Issue](https://github.com/yourusername/ecommerce-starter/issues/new) for bugs
-- Review the [Wiki](https://github.com/yourusername/ecommerce-starter/wiki) for guides
+Stripe for payment processing
+MongoDB Atlas for database hosting
+Tailwind CSS for styling framework
+React for the UI framework
 
-## 🗺️ Roadmap
 
-### Version 2.0
-- [ ] Multi-vendor marketplace
-- [ ] Advanced search with Elasticsearch
-- [ ] Real-time notifications
-- [ ] Mobile app (React Native)
-- [ ] Advanced analytics dashboard
-- [ ] Social authentication
-- [ ] Product reviews and ratings
-- [ ] Inventory management system
-- [ ] Multi-language support
-- [ ] Advanced shipping options
-
-## 👨‍💻 Author
-
-**Manuel Bauka**
-- GitHub: [@ManuJB023](https://github.com/ManuJB023)
-- LinkedIn: [manuel-bauka](https://www.linkedin.com/in/manuel-bauka)
-
-## 🙏 Acknowledgments
-
-- [Stripe](https://stripe.com) for payment processing
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for database hosting
-- [AWS Amplify](https://aws.amazon.com/amplify/) for frontend hosting
-- [Railway](https://railway.app) for backend deployment
-- [Tailwind CSS](https://tailwindcss.com) for styling framework
-
----
-
-⭐ Star this repository if you found it helpful!
+Made with ❤️ by [Your Name]
+Star this repo if you found it helpful!
