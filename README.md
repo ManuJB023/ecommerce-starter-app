@@ -410,6 +410,6 @@ MIT License - see LICENSE file for details
 
 ---
 
-Made with ❤️ by [Manuel Bauka]
+Made with ❤️ by Manuel Bauka
 
 Star this repo if you found it helpful!
